@@ -24,3 +24,13 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Custom class to hide horizontal scrollbars but keep scrolling */
+.no-s {
+  overflow-x: scroll;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.no-s::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+}
