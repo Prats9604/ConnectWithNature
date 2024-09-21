@@ -5,6 +5,9 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
 import postRoutes from './routes/posts';
 import userRoutes from './routes/users';
+import cloudinary from './config/cloudinary';
+import multer from 'multer';
+import path from 'path';
 
 dotenv.config();
 const app = express();
@@ -21,7 +24,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 // ---------------------
-
 
 app.get('/', (req, res) => { 
   res.send('Backend server is running');

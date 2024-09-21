@@ -29,24 +29,54 @@ router.post('/register', async(req, res)=>{
   }
 })
 
-//Login ROute
+//Login Route
 router.post('/login', async(req, res)=>{
   const {email, password} = req.body;
   try {
     const user = await User.findOne({email});
     if(!user){
-      return res.status(400).json({message:'User not found'})
+      return res.status(400).json({message:'User not found'});
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch){
       return res.status(400).json({message:'Invalid Credentials (Password)'});
     }
 
-    const token = jwt.sign({id:user._id}, process.env.JWT_SECRET!, {expiresIn:'1h'});
-    res.json({token});
+    const token = jwt.sign({id:user._id}, process.env.JWT_SECRET!, {expiresIn:'10h'});
+    res.json({token : token , userId : user._id});
     } catch (error) {
       res.status(500).json({message: 'Server error'});
   }
 });
+
+
+//Token check
+router.post('/requireauth', async(req, res)=>{
+   const { token } = req.body;
+
+  if (token) {
+    try {
+      const decode = jwt.verify(token, "secret");
+
+      res.json({
+        auth: true,
+        data: decode,
+      });
+    } catch (error:any) {
+      res.json({
+        auth: false,
+        data: error.message,
+      });
+    }
+  } else {
+    res.json({
+      auth: false,
+      data: "No Token Found in request",
+    });
+  }
+});
+
+
+
 
 export default router;

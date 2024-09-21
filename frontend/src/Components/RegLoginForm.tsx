@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { setAuthentication, isLogin } from "../utils/auth";
 
 const RegLoginForm = ({
   isOpen,
@@ -17,7 +18,6 @@ const RegLoginForm = ({
 
   if (!isOpen) return null;
 
-  // Function to clear the form fields
   const clearFields = () => {
     setEmail("");
     setPassword("");
@@ -37,10 +37,14 @@ const RegLoginForm = ({
             password,
           }
         );
-        const { token } = response.data;
-        localStorage.setItem("token", token); // Storing token locally
+        const { token, userId } = response.data;
+        console.log("response====", response.data);
+        setAuthentication(token);
+        console.log("token");
+        localStorage.setItem("userId", userId);
+        location.reload();
+        onClose();
       } else {
-        // Send both password and confirmPassword to backend
         if (password !== confirmPassword) {
           setError("Passwords do not match");
           return;
@@ -54,8 +58,8 @@ const RegLoginForm = ({
       }
 
       console.log("registration done");
-      clearFields(); // Clear the form on success
-      onClose(); // Close the modal on successful registration/login
+      clearFields();
+      onClose();
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -65,7 +69,6 @@ const RegLoginForm = ({
     }
   };
 
-  // Modify onClose to also clear the fields
   const handleClose = () => {
     clearFields();
     onClose();
@@ -114,7 +117,7 @@ const RegLoginForm = ({
                 type="button"
                 onClick={() => setIsLogin(false)}
               >
-                Want to be a contributor?{" "}
+                Want to be a contributor?
                 <span className="font-semibold">Register</span>
               </button>
             </form>
@@ -159,7 +162,7 @@ const RegLoginForm = ({
                 type="button"
                 onClick={() => setIsLogin(true)}
               >
-                Already a Contributor?{" "}
+                Already a Contributor?
                 <span className="font-semibold">Login</span>
               </button>
             </form>
