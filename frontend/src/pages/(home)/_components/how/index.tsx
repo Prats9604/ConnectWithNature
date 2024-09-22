@@ -36,7 +36,7 @@ const How = () => {
           className="hidden md:flex md:w-[200px] aspect-auto object-cover self-center"
         />
         <Image
-          src="/Images/how/HowRightbot.png"
+          src="/Images/how/HowRightBot.png"
           height={1156}
           width={1156}
           alt="Nature Image"
