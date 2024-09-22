@@ -69,7 +69,7 @@ const Nature = () => {
 
         <div className="absolute bottom-0 left-[25%] sm:left-1/2 lg:-ml-[10vw] transform -translate-x-1/2 z-20 w-[120vw] sm:w-[650px] md:w-[98vw] lg:w-[800px] xl:w-[900px] ">
           <Image
-            src="/Images/home/Woman_edited.png"
+            src="/Images/home/woman_edited.png"
             width={900}
             height={600}
             alt="Woman Image"
