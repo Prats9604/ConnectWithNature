@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { setAuthentication, isLogin } from "../../../utils/auth";
+import Image from "next/image";
 
 const RegLoginForm = ({
   isOpen,

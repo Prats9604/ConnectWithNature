@@ -16,7 +16,7 @@ const Nature = () => {
               className="w-full h-[100vh] object-cover"
             />
           </div>
-          <div className="hidden md:flex flex-col bg-[#01191B] md:w-1/2 lg:w-3/5 md:justify-end xl:justify-center pb-20 items-end text-right pr-8 lg:pr-12">
+          <div className="z-50 hidden md:flex flex-col bg-[#01191B] md:w-1/2 lg:w-3/5 md:justify-end xl:justify-center pb-20 items-end text-right pr-8 lg:pr-12">
             <div className="text-xl md:text-2xl font-semibold text-[#C67F54]">
               TRAVEL & ENJOY
             </div>
@@ -44,7 +44,7 @@ const Nature = () => {
           <div className="flex text-xl md:text-2xl font-semibold text-[#C67F54]">
             BREATH IN THE FRESH AIR
           </div>
-          <div className="flex w-[300px] text-[#C8EAEE] text-md pt-3">
+          <div className="flex max-w-[300px] sm:w-[300px] text-[#C8EAEE] text-md pt-3">
             Life is a beautiful journey that is meant to be embraced to the
             fullest every day.
           </div>
@@ -67,7 +67,7 @@ const Nature = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-[25%] sm:left-1/2 lg:-ml-[10vw] transform -translate-x-1/2 z-20 w-[120vw] sm:w-[650px] md:w-[98vw] lg:w-[800px] xl:w-[900px] ">
+        <div className="z-10 absolute bottom-0 left-[25%] sm:left-1/2 lg:-ml-[10vw] transform -translate-x-1/2 w-[120vw] sm:w-[650px] md:w-[98vw] lg:w-[800px] xl:w-[900px] ">
           <Image
             src="/Images/home/woman_edited.png"
             width={900}

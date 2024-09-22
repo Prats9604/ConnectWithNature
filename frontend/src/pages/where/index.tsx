@@ -6,6 +6,8 @@ import Header from "@/Components/Header";
 import RegLoginForm from "./Components/RegLoginForm";
 import AddPostForm from "./Components/AddPostForm";
 import { isLogin, logOut } from "@/utils/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 const destinationsConfig = [
@@ -155,12 +157,12 @@ const Where = () => {
               </div>
 
               <div className="flex justify-end items-center gap-2">
-                <div>Add Post</div>
-                <button
-                  onClick={handleAddPostClick}
-                  className="text-3xl bg-[#1C3F43] hover:bg-[#C67F54] text-white rounded-full w-10 h-10 flex items-center justify-center"
-                >
-                  +
+                <div>Favourite</div>
+                <button className="text-xl bg-[#1C3F43] hover:bg-[#C67F54] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors duration-300">
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    className="text-lg text-[#012527] hover:text-white transition-colors duration-300"
+                  />
                 </button>
               </div>
 
@@ -177,6 +179,16 @@ const Where = () => {
                     <div className="w-11 h-6 bg-[#1C3F43] peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-300 rounded-full peer dark:bg-[#1C3F43] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#C67F54]"></div>
                   </label>
                 </div>
+              </div>
+
+              <div className="flex justify-end items-center gap-2">
+                <div>Add Post</div>
+                <button
+                  onClick={handleAddPostClick}
+                  className="text-3xl bg-[#1C3F43] hover:bg-[#C67F54] text-white rounded-full w-10 h-10 flex items-center justify-center"
+                >
+                  +
+                </button>
               </div>
             </div>
           )}
@@ -209,16 +221,15 @@ const Where = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <div className="justify-end">
-                    <Image
-                      src="/Images/home/like.png"
-                      height={40}
-                      width={40}
-                      alt="Like"
-                      className=""
-                    />
+                  <div className="flex justify-end">
+                    <button className="text-xl bg-[#1C3F43] rounded-full w-9 h-9 flex items-center justify-center transition-colors duration-300 hover:bg-[#fff]">
+                      <FontAwesomeIcon
+                        icon={faHeart}
+                        className="text-lg text-white hover:text-red-600"
+                      />
+                    </button>
                   </div>
-                  <div className="hidden sm:flex text-[#C8EAEE] text-base md:text-lg">
+                  <div className="hidden sm:flex text-[#C8EAEE] text-base md:text-lg text-end">
                     ~{destination.contributor}
                   </div>
                 </div>
@@ -233,7 +244,6 @@ const Where = () => {
         {/* Modal for Log Out */}
         {isModalOpen && (
           <>
-            {/* Overlay to darken the background */}
             <div
               className="fixed inset-0 bg-black opacity-50 z-40"
               onClick={handleCloseModal}
