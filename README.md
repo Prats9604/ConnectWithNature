@@ -24,21 +24,3 @@ Check out the design on Figma:
 
 The project is live! Visit it on Vercel:
 [Connect With Nature - Live Website](https://connect-with-nature.vercel.app/)
-
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
