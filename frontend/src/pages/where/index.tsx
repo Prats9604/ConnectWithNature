@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "@/Components/Header";
-import RegLoginForm from "@/Components/RegLoginForm";
-import AddPostForm from "@/Components/AddPostForm";
+// import RegLoginForm from "@/Components/RegLoginForm";
+// import AddPostForm from "@/Components/AddPostForm";
+import RegLoginForm from "./Components/RegLoginForm";
+import AddPostForm from "./Components/AddPostForm";
 import { isLogin, logOut } from "@/utils/auth";
 import axios from "axios";
 
@@ -143,7 +145,7 @@ const Where = () => {
           ) : (
             <div className="ContributorSegment flex flex-col md:mt-4 sm:flex-row gap-4 sm:gap-8 justify-end">
               <div className="flex justify-end items-center gap-2">
-                <div>~Contributor</div>
+                <div>~{userdata}</div>
                 <button
                   onClick={handleContributorClick}
                   className="ContributorNameInitial text-2xl font-semibold text-[#012527] bg-[#1C3F43] hover:bg-[#C67F54] hover:text-white rounded-full w-10 h-10 flex items-center justify-center"
