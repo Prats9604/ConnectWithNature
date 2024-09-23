@@ -3,11 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
-import postRoutes from './routes/posts';
+import postRoutes from './routes/destination';
 import userRoutes from './routes/users';
-import cloudinary from './config/cloudinary';
-import multer from 'multer';
-import path from 'path';
 
 dotenv.config();
 const app = express();
