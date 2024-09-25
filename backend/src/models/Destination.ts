@@ -11,6 +11,7 @@ interface IDestination extends Document {
 const DestinationSchema = new Schema<IDestination>({
   name: { type: String, required: true },
   description: { type: String, required: true },
+  src: { type: [String], required: true }, 
   contributor: { type: String, required: true },
 }, { timestamps: true });
 
