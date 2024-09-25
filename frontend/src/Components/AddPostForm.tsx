@@ -16,6 +16,7 @@ const AddPostForm = ({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   if (!isOpen) return null;
 
+  
   const clearFields = () => {
     setName("");
     setDescription("");

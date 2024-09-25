@@ -13,6 +13,7 @@ const AddPostForm = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
+  const [contributor, setContributor] = useState("");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   if (!isOpen) return null;
@@ -21,6 +22,7 @@ const AddPostForm = ({
     setName("");
     setDescription("");
     setSelectedImages([]); // Clear images
+    setContributor("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,14 +34,15 @@ const AddPostForm = ({
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
+     formData.append("contributor", contributor);
 
-    // Append each selected image to FormData
+    // Append each selected image to FormData with "images" key
     selectedImages.forEach((image) => {
-      formData.append("image", image);
+      formData.append("images", image); // The backend expects "images" as the key for multiple files
     });
 
     try {
-      await axios.post("http://localhost:5000/api/posts/users", formData, {
+      await axios.post("http://localhost:5000/api/posts/destinations", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -98,6 +101,14 @@ const AddPostForm = ({
               className="text-[#012527] border-b-2 border-gray-300 p-2 outline-none focus:border-[#C8EAEE]"
               required
             />
+            <input
+              type="text"
+              placeholder="Contributor"
+              value={contributor}
+              onChange={(e) => setContributor(e.target.value)}
+              className="text-[#012527] border-b-2 border-gray-300 p-2 outline-none focus:border-[#C8EAEE]"
+              required
+            />
             <div className="flex flex-col gap-2">
               <div className="text-[#9CA3AF] pl-2">
                 Add Destination pictures
@@ -112,7 +123,7 @@ const AddPostForm = ({
                 <input
                   type="file"
                   accept="image/*"
-                  multiple
+                  multiple // Allow multiple image selection
                   ref={fileInputRef}
                   onChange={handleAddImageChange}
                   style={{ display: "none" }}
@@ -137,9 +148,9 @@ const AddPostForm = ({
               {loading ? "Adding..." : "Add Destination"}
             </button>
             {error && <div className="text-red-500 mt-2">{error}</div>}
-            <div className="flex justify-end text-[#1C3F43] font-semibold">
+            {/* <div className="flex justify-end text-[#1C3F43] font-semibold">
               ~As "Contributor"
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

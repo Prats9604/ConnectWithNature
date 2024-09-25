@@ -56,6 +56,7 @@ const Where = () => {
   const [login, setlogin] = useState(false);
   const [userId, setuserId] = useState();
   const [userdata, setuserdata] = useState();
+  const [destinations, setDestinations] = useState([]);
 
   const handleJoinUsClick = () => {
     setFormOpen(true);
@@ -117,6 +118,23 @@ const Where = () => {
     reterivedata();
     reteriveuserdata();
   });
+
+
+  // //for getting posts from database
+  // useEffect(() => {
+  //   const fetchDestinations = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:5000/destinations");
+  //       setDestinations(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching destinations:", error);
+  //     }
+  //   };
+
+  //   fetchDestinations();
+  // }, []);
+
+  
   return (
     <>
       <Header />
