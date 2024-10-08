@@ -115,26 +115,23 @@ const Where = () => {
       }
     };
 
+    const reterivedestination = async () => {
+      try {
+        const resp = await axios.get(
+          "http://localhost:5000/api/posts/destinations"
+        );
+        console.log("destinations=====", resp.data);
+        setDestinations(resp.data);
+        // setDestinations(resp.data);
+      } catch (eroor: any) {
+        console.log(eroor);
+      }
+    };
+
+    reterivedestination();
     reterivedata();
     reteriveuserdata();
-  });
-
-
-  // //for getting posts from database
-  // useEffect(() => {
-  //   const fetchDestinations = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:5000/destinations");
-  //       setDestinations(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching destinations:", error);
-  //     }
-  //   };
-
-  //   fetchDestinations();
-  // }, []);
-
-  
+  }, [userId]);
   return (
     <>
       <Header />
@@ -212,16 +209,17 @@ const Where = () => {
           )}
 
           {/* Mapping the destinationsConfig */}
-          {destinationsConfig.map((destination, index) => (
+          {destinations.map((destination: any, index: any) => (
             <div key={index} className="bg-[#012E30] py-6 flex flex-col gap-6">
               <div className="flex flex-row gap-6 pl-6 overflow-x-auto no-s">
-                {destination.src.map((src, imgIndex) => (
+                {destination?.src.map((src: any, imgIndex: any) => (
                   <Image
                     key={imgIndex}
                     src={src}
                     height={238}
                     width={310}
-                    alt={`Image ${imgIndex + 1} of ${destination.name}`}
+                    // alt={`Image ${imgIndex + 1} of ${destination.name}`}
+                    alt="destination"
                     className="aspect-auto object-cover self-center rounded-md"
                   />
                 ))}
@@ -229,13 +227,13 @@ const Where = () => {
               <div className="flex flex-row justify-between items-center px-10">
                 <div className="flex flex-col gap-1">
                   <div className="text-lg md:text-xl font-semibold">
-                    {destination.name}
+                    {destination?.name}
                   </div>
                   <div className="text-[#C67F54] text-base md:text-xl">
-                    {destination.description}
+                    {destination?.description}
                   </div>
                   <div className="sm:hidden text-[#C8EAEE] text-base md:text-lg">
-                    ~{destination.contributor}
+                    ~{destination?.contributor}
                   </div>
                 </div>
                 <div className="flex flex-col gap-1">
