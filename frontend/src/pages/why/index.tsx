@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Header from "@/Components/Header";
+// import Header from "@/Components/Header";.
+import Header from "../(home)/_components/Header";
 
 const Why = () => {
   return (

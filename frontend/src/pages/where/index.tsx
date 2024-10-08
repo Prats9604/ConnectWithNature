@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Header from "@/Components/Header";
+// import Header from "@/Components/Header";
+import Header from "../(home)/_components/Header";
 // import RegLoginForm from "@/Components/RegLoginForm";
 // import AddPostForm from "@/Components/AddPostForm";
 import RegLoginForm from "./Components/RegLoginForm";
