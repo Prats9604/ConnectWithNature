@@ -148,7 +148,7 @@ const Where = () => {
                   Discover breathtaking destinations and share your own travel
                   stories. Create an account to inspire others by posting your
                   favorite nature spots, along with photos and descriptions.
-                  Let's explore together!
+                  Let's explore together! Hehe
                 </div>
               </div>
               <div className="flex items-start w-[100%] md:w-auto">
