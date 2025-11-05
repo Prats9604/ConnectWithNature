@@ -11,43 +11,43 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const destinationsConfig = [
-  {
-    src: [
-      "/Images/where/place1.png",
-      "/Images/where/place2.png",
-      "/Images/where/place3.png",
-      "/Images/where/place3.png",
-      "/Images/where/place3.png",
-    ],
-    name: "Halong Bay",
-    description: "City in Vietnam",
-    contributor: "Patrick Richard",
-  },
-  {
-    src: [
-      "/Images/where/place1.png",
-      "/Images/where/place2.png",
-      "/Images/where/place3.png",
-      "/Images/where/place3.png",
-    ],
-    name: "Ha Long Bay",
-    description: "Bay in Vietnam",
-    contributor: "John Doe",
-  },
-  {
-    src: [
-      "/Images/where/place1.png",
-      "/Images/where/place2.png",
-      "/Images/where/place3.png",
-      "/Images/where/place3.png",
-      "/Images/where/place3.png",
-    ],
-    name: "Phu Quoc Island",
-    description: "Island in Vietnam",
-    contributor: "Jane Smith",
-  },
-];
+// const destinationsConfig = [
+//   {
+//     src: [
+//       "/Images/where/place1.png",
+//       "/Images/where/place2.png",
+//       "/Images/where/place3.png",
+//       "/Images/where/place3.png",
+//       "/Images/where/place3.png",
+//     ],
+//     name: "Halong Bay",
+//     description: "City in Vietnam",
+//     contributor: "Patrick Richard",
+//   },
+//   {
+//     src: [
+//       "/Images/where/place1.png",
+//       "/Images/where/place2.png",
+//       "/Images/where/place3.png",
+//       "/Images/where/place3.png",
+//     ],
+//     name: "Ha Long Bay",
+//     description: "Bay in Vietnam",
+//     contributor: "John Doe",
+//   },
+//   {
+//     src: [
+//       "/Images/where/place1.png",
+//       "/Images/where/place2.png",
+//       "/Images/where/place3.png",
+//       "/Images/where/place3.png",
+//       "/Images/where/place3.png",
+//     ],
+//     name: "Phu Quoc Island",
+//     description: "Island in Vietnam",
+//     contributor: "Jane Smith",
+//   },
+// ];
 
 const Where = () => {
   const [toggle, setToggle] = useState(false);
@@ -105,10 +105,10 @@ const Where = () => {
       try {
         if (userId) {
           const resp = await axios.get(
-            "http://localhost:5000/api/users/" + userId
+            "http://localhost:5001/api/users/" + userId
           );
 
-          console.log("response=====", resp);
+          // console.log("response=====", resp);
           setuserdata(resp.data.name);
         }
       } catch (eroor: any) {
@@ -119,9 +119,9 @@ const Where = () => {
     const reterivedestination = async () => {
       try {
         const resp = await axios.get(
-          "http://localhost:5000/api/posts/destinations"
+          "http://localhost:5001/api/posts/destinations"
         );
-        console.log("destinations=====", resp.data);
+        // console.log("destinations=====", resp.data);
         setDestinations(resp.data);
         // setDestinations(resp.data);
       } catch (eroor: any) {
@@ -213,18 +213,18 @@ const Where = () => {
           {destinations.map((destination: any, index: any) => (
             <div key={index} className="bg-[#012E30] py-6 flex flex-col gap-6">
               <div className="flex flex-row gap-6 pl-6 overflow-x-auto no-s">
-                {destination?.src.map((src: any, imgIndex: any) => (
-                  <Image
-                    key={imgIndex}
-                    src={src}
-                    height={238}
-                    width={310}
-                    // alt={`Image ${imgIndex + 1} of ${destination.name}`}
-                    alt="destination"
-                    className="aspect-auto object-cover self-center rounded-md"
-                  />
-                ))}
-              </div>
+      {destination?.src.map((src: any, imgIndex: any) => (
+        <div key={imgIndex} className="flex-shrink-0 w-[310px] h-[238px]"> {/* Fixed container */}
+          <Image
+            src={src}
+            height={238}
+            width={310}
+            alt="destination"
+            className="w-full h-full object-cover rounded-md" // Fill container
+          />
+        </div>
+      ))}
+    </div>
               <div className="flex flex-row justify-between items-center px-10">
                 <div className="flex flex-col gap-1">
                   <div className="text-lg md:text-xl font-semibold">

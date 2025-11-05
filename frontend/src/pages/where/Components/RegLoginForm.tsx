@@ -32,7 +32,7 @@ const RegLoginForm = ({
     try {
       if (isLogin) {
         const response = await axios.post(
-          "http://localhost:5000/api/auth/login",
+          "http://localhost:5001/api/auth/login",
           {
             email,
             password,
@@ -50,7 +50,7 @@ const RegLoginForm = ({
           setError("Passwords do not match");
           return;
         }
-        await axios.post("http://localhost:5000/api/auth/register", {
+        await axios.post("http://localhost:5001/api/auth/register", {
           name,
           email,
           password,

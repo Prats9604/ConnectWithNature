@@ -28,7 +28,7 @@ const AddPostForm = ({
     setError(null);
 
     try {
-      await axios.post("http://localhost:5000/api/posts/add", {
+      await axios.post("http://localhost:5001/api/posts/add", {
         name,
         description,
       });
